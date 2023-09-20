@@ -27,7 +27,6 @@ export default function NotionPage({
       darkMode={mounted ? theme === 'dark' : false}
       recordMap={recordMap}
       fullPage
-      forceCustomImages
       showTableOfContents
       disableHeader
       pageHeader={
@@ -35,7 +34,7 @@ export default function NotionPage({
           <CategoryList categories={post.categories} />
         </div>
       }
-      mapImageUrl={(url, block) => mapImageUrl(url, block) || ''}
+      mapImageUrl={(url, block) =>  ''}
       components={{
         Code,
         Collection,

@@ -43,6 +43,8 @@ export default async function PostPage({
 
   const recordMap = await getRecordMap(post.id);
 
+  console.log("post", post);
+
   return (
     <>
       <article
@@ -50,12 +52,6 @@ export default async function PostPage({
         className="mt-4 flex flex-col items-center md:mt-20"
       >
         <div className="relative aspect-[3/2] w-[90vw] max-w-[900px]">
-          <Image
-            src={post.cover}
-            alt="cover"
-            fill
-            style={{ objectFit: 'contain' }}
-          />
         </div>
         <NotionPage post={post} recordMap={recordMap} />
       </article>

@@ -1,10 +1,12 @@
 import { getRecordMap, mapImageUrl } from '@/libs/notion';
 import { Post } from '@/types/post';
 import { getBlurImage } from '@/utils/get-blur-image';
+import getConfig from 'next/config';
+const {publicRuntimeConfig} = getConfig();
 
 export async function getAllPostsFromNotion() {
   const allPosts: Post[] = [];
-  const recordMap = await getRecordMap(process.env.NOTION_DATABASE_ID!);
+  const recordMap = await getRecordMap(process.env.NOTION_DATABASE_ID! || publicRuntimeConfig.NOTION_DATABASE_ID);
   const { block, collection } = recordMap;
   const schema = Object.values(collection)[0].value.schema;
   const propertyMap: Record<string, string> = {};
@@ -36,7 +38,6 @@ export async function getAllPostsFromNotion() {
       const date = properties[propertyMap['Date']][0][1][0][1]['start_date'];
       const published = properties[propertyMap['Published']][0][0] === 'Yes';
 
-      console.log("coverrr", cover,"dfF",block[pageId].value, "blockssss");
       allPosts.push({
         id,
         title,
@@ -55,7 +56,5 @@ export async function getAllPostsFromNotion() {
   //const blurImagesPromises = allPosts.map((post) => getBlurImage(post.cover));
   //const blurImages = await Promise.all(blurImagesPromises);
   //allPosts.forEach((post, i) => (post.blurUrl = blurImages[i].base64));
-
-  console.log(allPosts);
   return allPosts;
 }
