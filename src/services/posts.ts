@@ -36,6 +36,7 @@ export async function getAllPostsFromNotion() {
       const date = properties[propertyMap['Date']][0][1][0][1]['start_date'];
       const published = properties[propertyMap['Published']][0][0] === 'Yes';
 
+      console.log("coverrr", cover,"dfF",block[pageId].value, "blockssss");
       allPosts.push({
         id,
         title,
@@ -43,7 +44,7 @@ export async function getAllPostsFromNotion() {
         categories,
         // Fix 403 error for images.
         // https://github.com/NotionX/react-notion-x/issues/211
-        cover: mapImageUrl(cover, block[pageId].value) || '',
+        cover:'',
         date,
         published,
         lastEditedAt,
@@ -51,9 +52,10 @@ export async function getAllPostsFromNotion() {
     }
   });
 
-  const blurImagesPromises = allPosts.map((post) => getBlurImage(post.cover));
-  const blurImages = await Promise.all(blurImagesPromises);
-  allPosts.forEach((post, i) => (post.blurUrl = blurImages[i].base64));
+  //const blurImagesPromises = allPosts.map((post) => getBlurImage(post.cover));
+  //const blurImages = await Promise.all(blurImagesPromises);
+  //allPosts.forEach((post, i) => (post.blurUrl = blurImages[i].base64));
 
+  console.log(allPosts);
   return allPosts;
 }

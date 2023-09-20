@@ -38,9 +38,7 @@ export default async function PostPage({
 
   const relatedPosts: Post[] = allPosts.filter(
     (p) =>
-      p.slug !== slug &&
-      p.published &&
-      p.categories.some((v) => post.categories.includes(v))
+      p.slug !== slug && p.categories.some((v) => post.categories.includes(v))
   );
 
   const recordMap = await getRecordMap(post.id);
@@ -57,8 +55,6 @@ export default async function PostPage({
             alt="cover"
             fill
             style={{ objectFit: 'contain' }}
-            placeholder="blur"
-            blurDataURL={post.blurUrl}
           />
         </div>
         <NotionPage post={post} recordMap={recordMap} />
@@ -88,13 +84,6 @@ export async function generateMetadata({
     ? {
         title: post.title,
         openGraph: {
-          images: [
-            {
-              url: post.cover,
-              width: 400,
-              height: 300,
-            },
-          ],
         },
       }
     : {};
