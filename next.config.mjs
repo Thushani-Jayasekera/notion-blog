@@ -18,13 +18,14 @@ const nextConfig = {
       },
     ],
   },
-
+/*
   publicRuntimeConfig: {
     NOTION_DATABASE_ID: process.env.NOTION_DATABASE_ID,
     NOTION_AUTH_TOKEN: process.env.NOTION_AUTH_TOKEN,
     SITE_URL: process.env.SITE_URL,
     API_KEY:process.env.API_KEY,
   },
+  */
 
   // suppress keyv warning
   webpack: (config, { webpack }) => {
