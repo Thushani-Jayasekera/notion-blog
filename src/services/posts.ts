@@ -6,7 +6,7 @@ import { getBlurImage } from '@/utils/get-blur-image';
 
 export async function getAllPostsFromNotion() {
   const allPosts: Post[] = [];
-  const recordMap = await getRecordMap(process.env.NOTION_DATABASE_ID!);
+  const recordMap = await getRecordMap(process.env.NEXT_PUBLIC_NOTION_DATABASE_ID!);
   const { block, collection } = recordMap;
   const schema = Object.values(collection)[0].value.schema;
   const propertyMap: Record<string, string> = {};
