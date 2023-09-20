@@ -1,10 +1,10 @@
-import getConfig from 'next/config';
+// import getConfig from 'next/config';
 import { NotionAPI } from 'notion-client';
 import { Block } from 'notion-types';
-const {publicRuntimeConfig} = getConfig();
+// const {publicRuntimeConfig} = getConfig();
 
 const notion = new NotionAPI({
-  authToken: process.env.NOTION_AUTH_TOKEN || publicRuntimeConfig.NOTION_AUTH_TOKEN,
+  authToken: process.env.NOTION_AUTH_TOKEN,
 });
 
 export function getRecordMap(id: string) {

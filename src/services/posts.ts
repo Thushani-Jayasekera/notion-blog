@@ -1,12 +1,12 @@
 import { getRecordMap, mapImageUrl } from '@/libs/notion';
 import { Post } from '@/types/post';
 import { getBlurImage } from '@/utils/get-blur-image';
-import getConfig from 'next/config';
-const {publicRuntimeConfig} = getConfig();
+//import getConfig from 'next/config';
+//const {publicRuntimeConfig} = getConfig();
 
 export async function getAllPostsFromNotion() {
   const allPosts: Post[] = [];
-  const recordMap = await getRecordMap(process.env.NOTION_DATABASE_ID! || publicRuntimeConfig.NOTION_DATABASE_ID);
+  const recordMap = await getRecordMap(process.env.NOTION_DATABASE_ID!);
   const { block, collection } = recordMap;
   const schema = Object.values(collection)[0].value.schema;
   const propertyMap: Record<string, string> = {};
