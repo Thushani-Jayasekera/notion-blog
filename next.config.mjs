@@ -1,5 +1,8 @@
 import withPlaiceholder from '@plaiceholder/next';
 
+const dotenv = require('dotenv');
+dotenv.config();
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   experimental: {
