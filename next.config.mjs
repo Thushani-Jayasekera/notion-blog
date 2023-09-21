@@ -1,7 +1,7 @@
 import withPlaiceholder from '@plaiceholder/next';
 
 import 'dotenv/config'
-dotenv.config();
+
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
