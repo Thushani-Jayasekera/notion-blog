@@ -1,6 +1,6 @@
 import withPlaiceholder from '@plaiceholder/next';
 
-const dotenv = require('dotenv');
+import 'dotenv/config'
 dotenv.config();
 
 /** @type {import('next').NextConfig} */
